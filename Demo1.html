@@ -12,7 +12,7 @@
     <div id="app"></div>
 </body>
 <script>
-    Vue.createApp({
+    Vue.createApp({ //创建一个Vue实例,和vue2中new vue一个意思。
         data() {
             return {
                 content: ' ' ,
@@ -31,7 +31,8 @@
                 this.isShowMeal = !this.isShowMeal
             }
         },
-        template: `<div>
+        //template是模板的意思,就是在JS里写html代码
+        template: `<div>   
                         <div>{{content}}</div>
                         <button @click='welBtn'>有顾客来</button>&nbsp;
                         <button @click='byeBtn'>顾客离开</button>
@@ -40,7 +41,7 @@
                             <button @click='showorhideBtn'>显示/隐藏套餐</button>
                         </div>
                   </div>`
-    }).mount("#app")
+    }).mount("#app")  //这个模板需要放一个位置,即挂载,挂载到`id=app`的DOM(div)上
 </script>
 
 </html>

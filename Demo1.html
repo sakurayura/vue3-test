@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>象牙山洗脚城</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                content: ' ' ,
+                setMeal:'真空套餐  帝王套餐  夏日套餐 学生套餐',
+                isShowMeal:false
+            }
+        }, 
+        methods:{
+            welBtn(){
+                this.content = '欢迎你的光临，贵宾一位！'
+            },
+            byeBtn(){
+                this.content = '欢迎下次光临，真空套餐下次8折优惠'
+            },
+            showorhideBtn(){
+                this.isShowMeal = !this.isShowMeal
+            }
+        },
+        template: `<div>
+                        <div>{{content}}</div>
+                        <button @click='welBtn'>有顾客来</button>&nbsp;
+                        <button @click='byeBtn'>顾客离开</button>
+                        <div>
+                            <div v-if='isShowMeal'>{{setMeal}}</div>
+                            <button @click='showorhideBtn'>显示/隐藏套餐</button>
+                        </div>
+                  </div>`
+    }).mount("#app")
+</script>
+
+</html>

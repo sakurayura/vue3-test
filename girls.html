@@ -13,13 +13,23 @@
 <script>
     Vue.createApp({
         data(){
-            return{
-                list:['1-Nancy','2-Mary','3-sakurayura','4-Rose']
+            return{  //声明list空白数组
+                inputValue:'',
+                list:[ ]
             }
         },
-        // v-for循环的数据是list,list中的每一项我会放到item中
+        methods: {
+            addGirls(){
+                this.list.push(this.inputValue)
+                this.inputValue='' // 输入完成后,清空输入框
+            }
+        },
+        // v-for循环的数据是list,list中的每一项会放到item中。v-for指令还有个索引
+        // v-model双向绑定。
         template: `<div>
-                    <li v-for='item of list'>{{item}}</li>
+                    <input v-model='inputValue' />
+                    <button @click='addGirls'>增加佳丽</button>
+                    <li v-for='(item,index) of list'>[{{index}}]{{item}}</li>
                   </div>`
     }).mount("#app")
 </script>

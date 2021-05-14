@@ -20,23 +20,24 @@
                 isShowMeal:false
             }
         }, 
-        methods:{
+        methods:{   //声明函数
             welBtn(){
                 this.content = '欢迎你的光临，贵宾一位！'
             },
             byeBtn(){
                 this.content = '欢迎下次光临，真空套餐下次8折优惠'
             },
-            showorhideBtn(){
+            showorhideBtn(){  //执行一次,isShowMeal真假切换
                 this.isShowMeal = !this.isShowMeal
             }
         },
-        //template是模板的意思,就是在JS里写html代码
-        template: `<div>   
+        //template是模板的意思,就是在JS里写html代码。注意开头的符号！
+        // v-if后的变量为true时,才会显示setMeal中的内容
+        template: `<div>   ！
                         <div>{{content}}</div>
                         <button @click='welBtn'>有顾客来</button>&nbsp;
                         <button @click='byeBtn'>顾客离开</button>
-                        <div>
+                        <div> 
                             <div v-if='isShowMeal'>{{setMeal}}</div>
                             <button @click='showorhideBtn'>显示/隐藏套餐</button>
                         </div>

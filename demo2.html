@@ -27,10 +27,18 @@
         // v-for循环的数据是list,list中的每一项会放到item中。v-for指令还有个索引
         // v-model双向绑定。
         template: `<div>
+                    <my-title />
                     <input v-model='inputValue' />
                     <button @click='addGirls'>增加佳丽</button>
                     <li v-for='(item,index) of list'>[{{index}}]{{item}}</li>
                   </div>`
+    })
+    app.component('my-title',{  //静态组件
+        template:'<h1 style="text-align:center">浣溪沙</h1>'
+    })
+    app.component('my-girl',{  //动态组件
+        props:['index','item'],
+        template:`<li>[{{index}}]-{{item}}</li>`
     })
     app.mount('#app')
 </script>

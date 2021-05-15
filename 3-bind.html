@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插值表达式和v-bind</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                message: '<i>我是数据</i>', //字面量中有html标签,想让其起作用
+                count : 5
+            }
+        },
+        methods: {
+            handleItemClick() {
+                this.message = this.message == '我是数据' ? "Bill" : "我是数据啦"
+            }
+        },
+        // message就是插值表达式(或字面量)，v-once只渲染一次。
+        // 绑定数据用v-bind,简写成冒号：，如title这一行。
+        // 在插值表达式中是使用JS表达式,最常用的是三元运算符.但不能用if等语句，只能是表达式！
+        // 例子：如果大于2显示大，小于2显示小
+        template: `<h2 
+                    v-on:click="handleItemClick" 
+                    v-html="message"
+                    v-once
+                    :title="message"
+                    > </h2>
+                    <div>{{count>2?'大':'小'}}</div>
+                    `
+    })
+    app.mount('#app') 
+</script>
+</html>

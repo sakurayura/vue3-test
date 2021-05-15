@@ -11,20 +11,33 @@
     <div id="app"></div>
 </body>
 <script>
-    // 创建vue应用.createApp()方法接受一个对象形式的参数{},即根组件
-    // const app = Vue.createApp({}) 
     const app = Vue.createApp({
         data() {
             return {
-                message: '我是数据' //这里定义了数据，也就是`model`数据
+                message: '我是数据' 
             }
         },
-        template: "<h2>{{message}}</h2>" //这里定义了模板，也就是`view`
+        methods: {
+            handleItemClick(){
+                alert('lalala')
+            }
+        },
+        // 生命周期函数:在某一时刻会自动执行.
+        beforeCreate() { //在实例生成之前会自动执行的函数
+            console.log('beforeCreate')
+        },
+        created() {  //在实例生成之后会自动执行的函数
+            console.log('created')
+        },
+        beforeMount() { //在模板渲染完成之前执行的函数
+            console.log('beforeMount')
+        },
+        mounted() { //在模板渲染完成之后执行的函数
+            console.log('mounted')
+        },
+        template: "<h2 @click='handleItemClick'>{{message}}</h2>"
     })
-    // mvvm设计模式中,m:model数据,v:view视图,最后vm:视图数据连接层。
-    // 这么写就会自动关联，就叫做`vm`。
-    app.mount('#app') //mount():挂载到DOM节点上,并返回根组件
-    // const vm = app.mount('app') //这里把根组件命名成vm。
-    // console.log(vm)
+    
+    app.mount('#app') 
 </script>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件和v-on</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                message: '<i>我是数据</i>', 
+                count : 5
+            }
+        },
+        methods: {
+            hanldClick(){
+                alert('欢迎光临红浪漫')
+            }
+        },
+        // v-on可以简写成@，[name]就是动态属性
+        template:`
+                <h2 @click="hanldClick" 
+                    :[name]="message">{{message}}</h2>`
+    })
+    app.mount('#app') 
+</script>
+</html>

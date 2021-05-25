@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插槽作用域</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.0.2/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+       const app = Vue.createApp({
+        template: `  
+            <h2>欢迎光临红浪漫-请选择您的技师</h2>
+            <list v-slot="{item}"> <div>{{item}}</div> </list>
+        `
+    })
+    app.component('List', {
+        data() {
+            return {
+                list: ['大脚', '刘英', '晓红']
+            }
+        },
+        template: `
+            <div>
+                <slot v-for='item in list' :item='item' />  
+            </div>
+        `
+    })
+
+    const vm = app.mount("#app")
+</script>
